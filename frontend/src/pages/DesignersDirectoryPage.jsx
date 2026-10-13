@@ -48,28 +48,28 @@ export const DesignersDirectoryPage = ({ setCurrentView, setSelectedDesignerId }
       
       {/* Header */}
       <div className="text-center max-w-3xl mx-auto mb-10 space-y-3">
-        <span className="text-xs font-semibold text-gold-400 uppercase tracking-widest block">
-          Bespoke Ateliers & Tailors Directory
+        <span className="text-xs font-semibold text-pink-600 uppercase tracking-widest block">
+          Local Tailors & Designers Directory
         </span>
-        <h1 className="font-serif text-3xl sm:text-5xl font-bold text-white">
-          Meet Independent Fashion Designers
+        <h1 className="font-serif text-3xl sm:text-5xl font-bold text-couture-200">
+          Find Master Tailors & Boutiques
         </h1>
-        <p className="text-sm text-couture-300 leading-relaxed">
-          From Paris evening gown couturiers to Savile Row tailoring masters and artisanal heritage weavers. Review verified credentials, portfolio showcases, and client ratings.
+        <p className="text-sm text-couture-400 leading-relaxed">
+          Connect with expert local tailors, boutique designers, and embroidery masters across India. Browse portfolios, verified reviews, and ratings.
         </p>
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="bg-couture-900/80 border border-couture-800 rounded-2xl p-4 sm:p-5 shadow-card-dark mb-10 space-y-4">
+      <div className="bg-couture-900 border border-couture-800 rounded-2xl p-4 sm:p-5 shadow-card-dark mb-10 space-y-4">
         <form onSubmit={handleSearchSubmit} className="flex flex-col sm:flex-row gap-3">
           <div className="relative flex-1">
-            <Search className="absolute top-3.5 left-3.5 w-4 h-4 text-couture-500" />
+            <Search className="absolute top-3.5 left-3.5 w-4 h-4 text-pink-400" />
             <input
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search by atelier name, city (Paris, London, New York), or craft..."
-              className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-couture-950 border border-couture-700 text-white placeholder-couture-600 focus:outline-none focus:border-gold-500 text-sm"
+              placeholder="Search by designer name, city (Mumbai, Delhi, Jaipur, Hyderabad...), or craft..."
+              className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-couture-950 border border-couture-800 text-couture-200 placeholder-couture-400 focus:outline-none focus:border-pink-500 text-sm"
             />
           </div>
 
@@ -77,19 +77,20 @@ export const DesignersDirectoryPage = ({ setCurrentView, setSelectedDesignerId }
             <select
               value={specialty}
               onChange={(e) => setSpecialty(e.target.value)}
-              className="px-3.5 py-2.5 rounded-xl bg-couture-950 border border-couture-700 text-white text-xs focus:outline-none focus:border-gold-500"
+              className="px-3.5 py-2.5 rounded-xl bg-couture-950 border border-couture-800 text-couture-200 text-xs focus:outline-none focus:border-pink-500"
             >
               <option value="">All Specialties</option>
-              <option value="Evening Wear">Evening Wear & Corsetry</option>
-              <option value="Bridal">Modern Bridal Couture</option>
-              <option value="Suit">Bespoke Tailoring & Tuxedos</option>
-              <option value="Heritage">Heritage Weaves & Zari</option>
-              <option value="Streetwear">Artisanal Streetwear</option>
+              <option value="Bridal">Bridal & Lehengas</option>
+              <option value="Saree Blouse">Saree Blouses & Draping</option>
+              <option value="Sherwani">Sherwanis & Kurta Sets</option>
+              <option value="Anarkali">Anarkalis & Salwar Suits</option>
+              <option value="Heritage">Zardozi & Heritage Embroidery</option>
+              <option value="Indo-Western">Indo-Western & Gowns</option>
             </select>
 
             <button
               type="submit"
-              className="px-5 py-2.5 rounded-xl bg-gold-500 hover:bg-gold-400 text-couture-950 font-bold text-xs uppercase tracking-wider shadow-glow-gold transition-all"
+              className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-pink-600 to-rose-500 hover:from-pink-500 hover:to-rose-400 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-pink-500/20 transition-all"
             >
               Search
             </button>
@@ -102,25 +103,25 @@ export const DesignersDirectoryPage = ({ setCurrentView, setSelectedDesignerId }
               type="checkbox"
               checked={verifiedOnly}
               onChange={(e) => setVerifiedOnly(e.target.checked)}
-              className="rounded bg-couture-950 border-couture-700 text-gold-500 focus:ring-0"
+              className="rounded bg-couture-950 border-couture-800 text-pink-500 focus:ring-0"
             />
-            <span className="text-couture-300">Show Verified Ateliers Only</span>
+            <span className="text-couture-300 font-medium">Show Verified Tailors & Designers Only</span>
           </label>
-          <span>{displayedDesigners.length} ateliers listed</span>
+          <span className="font-medium text-couture-400">{displayedDesigners.length} designers available</span>
         </div>
       </div>
 
       {/* Grid */}
       {loading ? (
         <div className="py-24 text-center text-couture-400">
-          <Sparkles className="w-8 h-8 text-gold-400 animate-spin mx-auto mb-2" />
-          <p className="text-sm">Loading designer ateliers...</p>
+          <Sparkles className="w-8 h-8 text-pink-500 animate-spin mx-auto mb-2" />
+          <p className="text-sm">Loading designers...</p>
         </div>
       ) : displayedDesigners.length === 0 ? (
-        <div className="py-24 text-center rounded-2xl bg-couture-900/40 border border-couture-800">
-          <Users className="w-10 h-10 text-couture-500 mx-auto mb-2" />
-          <p className="font-serif text-lg text-white">No ateliers match your filters</p>
-          <p className="text-xs text-couture-400 mt-1">Try resetting the specialty dropdown or search terms.</p>
+        <div className="py-24 text-center rounded-2xl bg-couture-900 border border-couture-800">
+          <Users className="w-10 h-10 text-pink-400 mx-auto mb-2" />
+          <p className="font-serif text-lg text-couture-200">No designers match your filters</p>
+          <p className="text-xs text-couture-400 mt-1">Try selecting "All Specialties" or resetting search terms.</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

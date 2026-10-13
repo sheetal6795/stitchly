@@ -25,7 +25,7 @@ export const Navbar = ({ currentView, setCurrentView, onOpenDemoLogin }) => {
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full bg-couture-950/80 backdrop-blur-xl border-b border-couture-800/60 transition-all">
+    <header className="sticky top-0 z-40 w-full bg-couture-950/90 backdrop-blur-xl border-b border-couture-800/80 transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           
@@ -34,17 +34,17 @@ export const Navbar = ({ currentView, setCurrentView, onOpenDemoLogin }) => {
             onClick={() => handleNav('home')}
             className="flex items-center space-x-3 cursor-pointer group"
           >
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-gold-600 via-gold-400 to-amber-200 p-[1px] shadow-glow-gold transition-transform group-hover:scale-105">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-pink-600 via-rose-400 to-purple-400 p-[1px] shadow-lg shadow-pink-500/20 transition-transform group-hover:scale-105">
               <div className="w-full h-full bg-couture-950 rounded-[11px] flex items-center justify-center">
-                <Scissors className="w-5 h-5 text-gold-400 transform -rotate-45" />
+                <Scissors className="w-5 h-5 text-pink-400 transform -rotate-45" />
               </div>
             </div>
             <div>
-              <span className="font-serif text-2xl tracking-wider font-semibold gold-gradient-text">
+              <span className="font-serif text-2xl tracking-wider font-semibold bg-gradient-to-r from-pink-400 via-rose-300 to-purple-300 bg-clip-text text-transparent">
                 STITCHLY
               </span>
-              <span className="block text-[10px] tracking-widest text-couture-400 uppercase font-sans -mt-1">
-                Haute Bespoke
+              <span className="block text-[10px] tracking-widest text-pink-300/80 uppercase font-sans -mt-1 font-medium">
+                Custom Fashion Made Easy
               </span>
             </div>
           </div>
@@ -54,15 +54,15 @@ export const Navbar = ({ currentView, setCurrentView, onOpenDemoLogin }) => {
             <button
               onClick={() => handleNav('home')}
               className={`px-3.5 py-2 rounded-lg text-sm font-medium transition-colors ${
-                currentView === 'home' ? 'text-gold-400 bg-couture-900' : 'text-couture-300 hover:text-white hover:bg-couture-900/60'
+                currentView === 'home' ? 'text-pink-400 bg-couture-900' : 'text-couture-300 hover:text-white hover:bg-couture-900/60'
               }`}
             >
-              Editorial
+              Home
             </button>
             <button
               onClick={() => handleNav('explore')}
               className={`flex items-center space-x-1.5 px-3.5 py-2 rounded-lg text-sm font-medium transition-colors ${
-                currentView === 'explore' ? 'text-gold-400 bg-couture-900' : 'text-couture-300 hover:text-white hover:bg-couture-900/60'
+                currentView === 'explore' ? 'text-pink-400 bg-couture-900' : 'text-couture-300 hover:text-white hover:bg-couture-900/60'
               }`}
             >
               <Compass className="w-4 h-4" />
@@ -71,31 +71,31 @@ export const Navbar = ({ currentView, setCurrentView, onOpenDemoLogin }) => {
             <button
               onClick={() => handleNav('designers')}
               className={`flex items-center space-x-1.5 px-3.5 py-2 rounded-lg text-sm font-medium transition-colors ${
-                currentView === 'designers' ? 'text-gold-400 bg-couture-900' : 'text-couture-300 hover:text-white hover:bg-couture-900/60'
+                currentView === 'designers' ? 'text-pink-400 bg-couture-900' : 'text-couture-300 hover:text-white hover:bg-couture-900/60'
               }`}
             >
               <Users className="w-4 h-4" />
-              <span>Ateliers</span>
+              <span>Find Tailors & Designers</span>
             </button>
             <button
               onClick={() => handleNav('ai-studio')}
               className={`flex items-center space-x-1.5 px-3.5 py-2 rounded-lg text-sm font-medium transition-all ${
                 currentView === 'ai-studio' 
-                  ? 'text-gold-400 bg-gold-500/10 border border-gold-500/30' 
-                  : 'text-amber-200/90 hover:text-gold-300 hover:bg-gold-500/5'
+                  ? 'text-pink-300 bg-pink-500/20 border border-pink-500/40' 
+                  : 'text-pink-200/90 hover:text-pink-300 hover:bg-pink-500/10'
               }`}
             >
-              <Sparkles className="w-4 h-4 text-gold-400 animate-pulse" />
+              <Sparkles className="w-4 h-4 text-pink-400 animate-pulse" />
               <span>AI Studio</span>
             </button>
           </nav>
 
           {/* User & Action Buttons */}
           <div className="hidden md:flex items-center space-x-3">
-            {/* Quick Demo Switcher Button for instant evaluator ease */}
+            {/* Quick Demo Switcher Button */}
             <button
               onClick={onOpenDemoLogin}
-              className="text-xs px-2.5 py-1.5 rounded-lg border border-couture-700 bg-couture-900/80 text-couture-300 hover:border-gold-500/50 hover:text-gold-300 transition-colors"
+              className="text-xs px-2.5 py-1.5 rounded-lg border border-couture-700 bg-couture-900/80 text-couture-300 hover:border-pink-500/50 hover:text-pink-300 transition-colors"
               title="Fast switch between Customer, Designer, and Admin accounts"
             >
               Demo Logins
@@ -107,18 +107,18 @@ export const Navbar = ({ currentView, setCurrentView, onOpenDemoLogin }) => {
                   <>
                     <button
                       onClick={() => handleNav('post-requirement')}
-                      className="flex items-center space-x-1.5 px-3.5 py-2 rounded-lg bg-gradient-to-r from-gold-600 to-gold-500 hover:from-gold-500 hover:to-amber-400 text-couture-950 font-semibold text-xs uppercase tracking-wider shadow-glow-gold transition-all transform hover:-translate-y-0.5"
+                      className="flex items-center space-x-1.5 px-3.5 py-2 rounded-lg bg-gradient-to-r from-pink-600 via-rose-500 to-pink-500 hover:from-pink-500 hover:to-rose-400 text-white font-semibold text-xs uppercase tracking-wider shadow-lg shadow-pink-500/25 transition-all transform hover:-translate-y-0.5"
                     >
                       <PlusCircle className="w-4 h-4" />
-                      <span>Post Custom Garment</span>
+                      <span>Post Outfit Requirement</span>
                     </button>
                     <button
                       onClick={() => handleNav('customer-dashboard')}
                       className={`flex items-center space-x-1.5 px-3 py-2 rounded-lg text-sm font-medium ${
-                        currentView === 'customer-dashboard' ? 'text-gold-400 bg-couture-900' : 'text-couture-300 hover:text-white'
+                        currentView === 'customer-dashboard' ? 'text-pink-400 bg-couture-900' : 'text-couture-300 hover:text-white'
                       }`}
                     >
-                      <ShoppingBag className="w-4 h-4 text-gold-400" />
+                      <ShoppingBag className="w-4 h-4 text-pink-400" />
                       <span>My Wardrobe</span>
                     </button>
                   </>
@@ -128,11 +128,11 @@ export const Navbar = ({ currentView, setCurrentView, onOpenDemoLogin }) => {
                   <button
                     onClick={() => handleNav('designer-dashboard')}
                     className={`flex items-center space-x-1.5 px-3.5 py-2 rounded-lg text-sm font-medium ${
-                      currentView === 'designer-dashboard' ? 'text-gold-400 bg-couture-900 border border-gold-500/30' : 'text-couture-300 hover:text-white bg-couture-900/50'
+                      currentView === 'designer-dashboard' ? 'text-pink-400 bg-couture-900 border border-pink-500/30' : 'text-couture-300 hover:text-white bg-couture-900/50'
                     }`}
                   >
-                    <Layers className="w-4 h-4 text-gold-400" />
-                    <span>Designer Atelier</span>
+                    <Layers className="w-4 h-4 text-pink-400" />
+                    <span>Designer Workspace</span>
                   </button>
                 )}
 
@@ -154,18 +154,18 @@ export const Navbar = ({ currentView, setCurrentView, onOpenDemoLogin }) => {
                     <img
                       src={user?.avatarUrl || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80"}
                       alt={user?.name}
-                      className="w-8 h-8 rounded-full object-cover ring-1 ring-gold-500/50"
+                      className="w-8 h-8 rounded-full object-cover ring-1 ring-pink-500/50"
                     />
                     <div className="text-left hidden lg:block">
                       <p className="text-xs font-semibold text-white leading-tight truncate max-w-[100px]">{user?.name}</p>
-                      <p className="text-[10px] text-gold-400/80 leading-tight">
-                        {isCustomer ? 'Client' : isDesigner ? 'Designer' : 'Admin'}
+                      <p className="text-[10px] text-pink-300/80 leading-tight">
+                        {isCustomer ? 'Customer' : isDesigner ? 'Designer' : 'Admin'}
                       </p>
                     </div>
                   </div>
                   <button
                     onClick={logout}
-                    className="p-1.5 text-couture-400 hover:text-red-400 rounded-lg hover:bg-couture-900 transition-colors"
+                    className="p-1.5 text-couture-400 hover:text-rose-400 rounded-lg hover:bg-couture-900 transition-colors"
                     title="Sign Out"
                   >
                     <LogOut className="w-4 h-4" />
@@ -182,7 +182,7 @@ export const Navbar = ({ currentView, setCurrentView, onOpenDemoLogin }) => {
                 </button>
                 <button
                   onClick={() => handleNav('register')}
-                  className="px-4 py-2 rounded-lg bg-gradient-to-r from-gold-600 to-gold-500 hover:from-gold-500 hover:to-amber-400 text-couture-950 font-semibold text-xs uppercase tracking-wider shadow-glow-gold transition-all"
+                  className="px-4 py-2 rounded-lg bg-gradient-to-r from-pink-600 to-rose-500 hover:from-pink-500 hover:to-rose-400 text-white font-semibold text-xs uppercase tracking-wider shadow-lg shadow-pink-500/20 transition-all"
                 >
                   Join Stitchly
                 </button>
@@ -194,7 +194,7 @@ export const Navbar = ({ currentView, setCurrentView, onOpenDemoLogin }) => {
           <div className="flex md:hidden items-center space-x-2">
             <button
               onClick={onOpenDemoLogin}
-              className="text-[11px] px-2 py-1 rounded border border-couture-700 bg-couture-900 text-gold-300"
+              className="text-[11px] px-2 py-1 rounded border border-couture-700 bg-couture-900 text-pink-300"
             >
               Demo
             </button>
@@ -215,7 +215,7 @@ export const Navbar = ({ currentView, setCurrentView, onOpenDemoLogin }) => {
             onClick={() => handleNav('home')}
             className="block w-full text-left py-2 px-3 rounded-lg text-base text-couture-200 hover:bg-couture-900"
           >
-            Editorial Home
+            Home
           </button>
           <button
             onClick={() => handleNav('explore')}
@@ -227,11 +227,11 @@ export const Navbar = ({ currentView, setCurrentView, onOpenDemoLogin }) => {
             onClick={() => handleNav('designers')}
             className="block w-full text-left py-2 px-3 rounded-lg text-base text-couture-200 hover:bg-couture-900"
           >
-            Ateliers & Designers
+            Tailors & Designers
           </button>
           <button
             onClick={() => handleNav('ai-studio')}
-            className="block w-full text-left py-2 px-3 rounded-lg text-base text-gold-400 bg-gold-500/10 border border-gold-500/20"
+            className="block w-full text-left py-2 px-3 rounded-lg text-base text-pink-300 bg-pink-500/10 border border-pink-500/20"
           >
             ✨ AI Design Studio
           </button>
@@ -246,7 +246,7 @@ export const Navbar = ({ currentView, setCurrentView, onOpenDemoLogin }) => {
                 />
                 <div>
                   <p className="text-sm font-semibold text-white">{user?.name}</p>
-                  <p className="text-xs text-gold-400">{user?.role}</p>
+                  <p className="text-xs text-pink-300">{user?.role}</p>
                 </div>
               </div>
 
@@ -254,9 +254,9 @@ export const Navbar = ({ currentView, setCurrentView, onOpenDemoLogin }) => {
                 <>
                   <button
                     onClick={() => handleNav('post-requirement')}
-                    className="block w-full text-center py-2.5 rounded-lg bg-gold-500 text-couture-950 font-semibold text-sm"
+                    className="block w-full text-center py-2.5 rounded-lg bg-pink-500 text-white font-semibold text-sm"
                   >
-                    Post Custom Garment
+                    Post Outfit Requirement
                   </button>
                   <button
                     onClick={() => handleNav('customer-dashboard')}
@@ -270,9 +270,9 @@ export const Navbar = ({ currentView, setCurrentView, onOpenDemoLogin }) => {
               {isDesigner && (
                 <button
                   onClick={() => handleNav('designer-dashboard')}
-                  className="block w-full text-left py-2 px-3 rounded-lg text-gold-400 bg-couture-900"
+                  className="block w-full text-left py-2 px-3 rounded-lg text-pink-300 bg-couture-900"
                 >
-                  Designer Atelier Workspace
+                  Designer Workspace
                 </button>
               )}
 
@@ -290,7 +290,7 @@ export const Navbar = ({ currentView, setCurrentView, onOpenDemoLogin }) => {
                   logout();
                   setMobileMenuOpen(false);
                 }}
-                className="block w-full text-left py-2 px-3 rounded-lg text-red-400 hover:bg-couture-900"
+                className="block w-full text-left py-2 px-3 rounded-lg text-rose-400 hover:bg-couture-900"
               >
                 Sign Out
               </button>
@@ -305,7 +305,7 @@ export const Navbar = ({ currentView, setCurrentView, onOpenDemoLogin }) => {
               </button>
               <button
                 onClick={() => handleNav('register')}
-                className="w-full py-2.5 rounded-lg bg-gold-500 text-couture-950 font-semibold text-sm text-center"
+                className="w-full py-2.5 rounded-lg bg-pink-500 text-white font-semibold text-sm text-center"
               >
                 Join Stitchly
               </button>

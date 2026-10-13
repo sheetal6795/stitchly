@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Scissors, User, Sparkles, ArrowRight, ShieldCheck } from 'lucide-react';
+import { Scissors, User, Sparkles, ArrowRight, ShieldCheck, Heart } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
 
@@ -32,7 +32,7 @@ export const AuthPage = ({ initialMode = 'login', setCurrentView, onOpenDemoLogi
     try {
       if (mode === 'login') {
         const user = await login(email.trim(), password);
-        toast.success(`Welcome back, ${user.name}!`);
+        toast.success(`Welcome back, ${user.name}! 💕`);
         
         if (user.role === 'ROLE_ADMIN') {
           setCurrentView('admin-dashboard');
@@ -58,7 +58,7 @@ export const AuthPage = ({ initialMode = 'login', setCurrentView, onOpenDemoLogi
         };
 
         const user = await register(registerPayload);
-        toast.success(`Account created successfully! Welcome to Stitchly.`);
+        toast.success(`Account created successfully! Welcome to Stitchly. ✨`);
 
         if (user.role === 'ROLE_DESIGNER') {
           setCurrentView('designer-dashboard');
@@ -74,39 +74,37 @@ export const AuthPage = ({ initialMode = 'login', setCurrentView, onOpenDemoLogi
   };
 
   return (
-    <div className="w-full min-h-[85vh] flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8">
+    <div className="w-full min-h-[85vh] flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8 bg-couture-950">
       <div className="w-full max-w-md space-y-6">
         
         {/* Card */}
-        <div className="bg-couture-900/90 border border-couture-800 rounded-3xl p-8 shadow-card-dark backdrop-blur-xl">
+        <div className="bg-couture-900 border border-couture-800 rounded-3xl p-8 shadow-card-dark">
           
           {/* Header Brand */}
           <div className="text-center space-y-2 mb-8">
-            <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-gold-600 via-gold-400 to-amber-200 p-[1px] mx-auto shadow-glow-gold">
-              <div className="w-full h-full bg-couture-950 rounded-[15px] flex items-center justify-center">
-                <Scissors className="w-6 h-6 text-gold-400 transform -rotate-45" />
-              </div>
+            <div className="w-12 h-12 rounded-2xl bg-pink-500/10 border border-pink-300 p-[1px] mx-auto flex items-center justify-center shadow-sm">
+              <Scissors className="w-6 h-6 text-pink-600 transform -rotate-45" />
             </div>
-            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-white">
+            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-couture-200">
               {mode === 'login' ? 'Welcome Back' : 'Create an Account'}
             </h2>
             <p className="text-xs text-couture-400">
               {mode === 'login'
-                ? 'Sign in to access your bespoke wardrobe & commissions'
-                : 'Join our haute custom fashion marketplace'}
+                ? 'Sign in to access your saved designs & custom orders'
+                : 'Join India’s custom fashion marketplace'}
             </p>
           </div>
 
           {/* Quick Demo Credentials shortcut */}
-          <div className="mb-6 p-3 rounded-xl bg-couture-950/80 border border-gold-500/30 flex items-center justify-between">
+          <div className="mb-6 p-3.5 rounded-2xl bg-couture-950 border border-pink-200 flex items-center justify-between">
             <div className="text-xs">
-              <span className="text-gold-300 font-semibold block">Need a quick demo login?</span>
-              <span className="text-couture-500 text-[11px]">Instant customer, designer, or admin sign-in</span>
+              <span className="text-pink-600 font-bold block">Need a quick demo login?</span>
+              <span className="text-couture-400 text-[11px]">Instant customer or designer sign-in</span>
             </div>
             <button
               type="button"
               onClick={onOpenDemoLogin}
-              className="text-xs px-2.5 py-1.5 rounded-lg bg-gold-500 text-couture-950 font-bold uppercase"
+              className="text-xs px-3 py-1.5 rounded-xl bg-gradient-to-r from-pink-600 to-rose-500 text-white font-bold uppercase tracking-wider shadow-sm hover:from-pink-500 hover:to-rose-400 transition-all"
             >
               Demo Logins
             </button>
@@ -119,8 +117,8 @@ export const AuthPage = ({ initialMode = 'login', setCurrentView, onOpenDemoLogi
               onClick={() => setMode('login')}
               className={`py-2 rounded-lg transition-all ${
                 mode === 'login'
-                  ? 'bg-couture-800 text-white shadow-sm'
-                  : 'text-couture-400 hover:text-white'
+                  ? 'bg-pink-500 text-white shadow-sm font-bold'
+                  : 'text-couture-400 hover:text-couture-200'
               }`}
             >
               Sign In
@@ -130,8 +128,8 @@ export const AuthPage = ({ initialMode = 'login', setCurrentView, onOpenDemoLogi
               onClick={() => setMode('register')}
               className={`py-2 rounded-lg transition-all ${
                 mode === 'register'
-                  ? 'bg-couture-800 text-white shadow-sm'
-                  : 'text-couture-400 hover:text-white'
+                  ? 'bg-pink-500 text-white shadow-sm font-bold'
+                  : 'text-couture-400 hover:text-couture-200'
               }`}
             >
               Register
@@ -144,7 +142,7 @@ export const AuthPage = ({ initialMode = 'login', setCurrentView, onOpenDemoLogi
             {/* If Register: Role selector */}
             {mode === 'register' && (
               <div className="space-y-2 mb-4">
-                <label className="block text-[11px] font-semibold text-couture-400 uppercase tracking-wider">
+                <label className="block text-[11px] font-bold text-couture-400 uppercase tracking-wider">
                   I Want To Join As:
                 </label>
                 <div className="grid grid-cols-2 gap-2">
@@ -153,13 +151,13 @@ export const AuthPage = ({ initialMode = 'login', setCurrentView, onOpenDemoLogi
                     onClick={() => setSelectedRole('ROLE_CUSTOMER')}
                     className={`p-3 rounded-xl border text-left transition-all ${
                       selectedRole === 'ROLE_CUSTOMER'
-                        ? 'bg-gold-500/10 border-gold-500/60 text-white'
-                        : 'bg-couture-950 border-couture-800 text-couture-400 hover:text-white'
+                        ? 'bg-pink-500/10 border-pink-300 text-pink-600'
+                        : 'bg-couture-950 border-couture-800 text-couture-400 hover:text-couture-200'
                     }`}
                   >
-                    <User className="w-4 h-4 mb-1 text-gold-400" />
-                    <p className="text-xs font-bold">Client / Patron</p>
-                    <span className="text-[10px] text-couture-500 block">Commission custom pieces</span>
+                    <User className="w-4 h-4 mb-1 text-pink-500" />
+                    <p className="text-xs font-bold">Shopper / Client</p>
+                    <span className="text-[10px] text-couture-400 block">Get custom outfits stitched</span>
                   </button>
 
                   <button
@@ -167,13 +165,13 @@ export const AuthPage = ({ initialMode = 'login', setCurrentView, onOpenDemoLogi
                     onClick={() => setSelectedRole('ROLE_DESIGNER')}
                     className={`p-3 rounded-xl border text-left transition-all ${
                       selectedRole === 'ROLE_DESIGNER'
-                        ? 'bg-gold-500/10 border-gold-500/60 text-white'
-                        : 'bg-couture-950 border-couture-800 text-couture-400 hover:text-white'
+                        ? 'bg-pink-500/10 border-pink-300 text-pink-600'
+                        : 'bg-couture-950 border-couture-800 text-couture-400 hover:text-couture-200'
                     }`}
                   >
-                    <Scissors className="w-4 h-4 mb-1 text-gold-400" />
-                    <p className="text-xs font-bold">Bespoke Designer</p>
-                    <span className="text-[10px] text-couture-500 block">Receive custom client bids</span>
+                    <Scissors className="w-4 h-4 mb-1 text-pink-500" />
+                    <p className="text-xs font-bold">Tailor / Designer</p>
+                    <span className="text-[10px] text-couture-400 block">Receive client order requests</span>
                   </button>
                 </div>
               </div>
@@ -182,7 +180,7 @@ export const AuthPage = ({ initialMode = 'login', setCurrentView, onOpenDemoLogi
             {/* Name (if register) */}
             {mode === 'register' && (
               <div>
-                <label className="block text-xs font-semibold text-couture-300 uppercase tracking-wider mb-1.5">
+                <label className="block text-xs font-semibold text-couture-200 uppercase tracking-wider mb-1.5">
                   Full Name *
                 </label>
                 <input
@@ -190,15 +188,15 @@ export const AuthPage = ({ initialMode = 'login', setCurrentView, onOpenDemoLogi
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  placeholder="e.g. Sophia Vance"
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-couture-950 border border-couture-700 text-white placeholder-couture-600 focus:outline-none focus:border-gold-500 text-sm"
+                  placeholder="e.g. Ananya Sharma"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-couture-950 border border-couture-800 text-couture-200 placeholder-couture-400 focus:outline-none focus:border-pink-500 text-sm"
                 />
               </div>
             )}
 
             {/* Email */}
             <div>
-              <label className="block text-xs font-semibold text-couture-300 uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-semibold text-couture-200 uppercase tracking-wider mb-1.5">
                 Email Address *
               </label>
               <input
@@ -206,14 +204,14 @@ export const AuthPage = ({ initialMode = 'login', setCurrentView, onOpenDemoLogi
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="you@domain.com"
-                className="w-full px-3.5 py-2.5 rounded-xl bg-couture-950 border border-couture-700 text-white placeholder-couture-600 focus:outline-none focus:border-gold-500 text-sm"
+                placeholder="name@example.com"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-couture-950 border border-couture-800 text-couture-200 placeholder-couture-400 focus:outline-none focus:border-pink-500 text-sm"
               />
             </div>
 
             {/* Password */}
             <div>
-              <label className="block text-xs font-semibold text-couture-300 uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-semibold text-couture-200 uppercase tracking-wider mb-1.5">
                 Password *
               </label>
               <input
@@ -223,25 +221,25 @@ export const AuthPage = ({ initialMode = 'login', setCurrentView, onOpenDemoLogi
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full px-3.5 py-2.5 rounded-xl bg-couture-950 border border-couture-700 text-white placeholder-couture-600 focus:outline-none focus:border-gold-500 text-sm"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-couture-950 border border-couture-800 text-couture-200 placeholder-couture-400 focus:outline-none focus:border-pink-500 text-sm"
               />
             </div>
 
             {/* Extra Designer Registration Fields */}
             {mode === 'register' && selectedRole === 'ROLE_DESIGNER' && (
-              <div className="pt-2 space-y-3 border-t border-couture-800">
-                <span className="text-[10px] font-bold uppercase tracking-widest text-gold-400 block">
-                  Atelier Credentials
+              <div className="pt-3 space-y-3 border-t border-couture-800">
+                <span className="text-[10px] font-bold uppercase tracking-widest text-pink-600 block">
+                  Boutique / Atelier Profile
                 </span>
 
                 <div>
-                  <label className="block text-[11px] text-couture-400 mb-1">Brand / Atelier Name</label>
+                  <label className="block text-[11px] text-couture-400 mb-1">Brand or Boutique Name</label>
                   <input
                     type="text"
                     value={brandName}
                     onChange={(e) => setBrandName(e.target.value)}
-                    placeholder="e.g. Atelier Maison Laurent"
-                    className="w-full px-3 py-2 rounded-xl bg-couture-950 border border-couture-700 text-white text-xs"
+                    placeholder="e.g. Ananya Haute Boutique"
+                    className="w-full px-3 py-2 rounded-xl bg-couture-950 border border-couture-800 text-couture-200 text-xs focus:outline-none focus:border-pink-500"
                   />
                 </div>
 
@@ -251,20 +249,20 @@ export const AuthPage = ({ initialMode = 'login', setCurrentView, onOpenDemoLogi
                     type="text"
                     value={specialties}
                     onChange={(e) => setSpecialties(e.target.value)}
-                    placeholder="e.g. Evening Wear, Haute Silk Draping, Corsetry"
-                    className="w-full px-3 py-2 rounded-xl bg-couture-950 border border-couture-700 text-white text-xs"
+                    placeholder="e.g. Bridal Lehengas, Zardozi Embroidery, Saree Blouses"
+                    className="w-full px-3 py-2 rounded-xl bg-couture-950 border border-couture-800 text-couture-200 text-xs focus:outline-none focus:border-pink-500"
                   />
                 </div>
 
                 <div className="grid grid-cols-2 gap-2">
                   <div>
-                    <label className="block text-[11px] text-couture-400 mb-1">Location</label>
+                    <label className="block text-[11px] text-couture-400 mb-1">City / Location</label>
                     <input
                       type="text"
                       value={location}
                       onChange={(e) => setLocation(e.target.value)}
-                      placeholder="Paris / New York"
-                      className="w-full px-3 py-2 rounded-xl bg-couture-950 border border-couture-700 text-white text-xs"
+                      placeholder="Mumbai / Delhi"
+                      className="w-full px-3 py-2 rounded-xl bg-couture-950 border border-couture-800 text-couture-200 text-xs focus:outline-none focus:border-pink-500"
                     />
                   </div>
                   <div>
@@ -273,19 +271,19 @@ export const AuthPage = ({ initialMode = 'login', setCurrentView, onOpenDemoLogi
                       type="number"
                       value={experienceYears}
                       onChange={(e) => setExperienceYears(e.target.value)}
-                      className="w-full px-3 py-2 rounded-xl bg-couture-950 border border-couture-700 text-white text-xs"
+                      className="w-full px-3 py-2 rounded-xl bg-couture-950 border border-couture-800 text-couture-200 text-xs focus:outline-none focus:border-pink-500"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-[11px] text-couture-400 mb-1">Design Philosophy / Bio</label>
+                  <label className="block text-[11px] text-couture-400 mb-1">Short Bio</label>
                   <textarea
                     rows="2"
                     value={bio}
                     onChange={(e) => setBio(e.target.value)}
-                    placeholder="Short summary of your artisanal training and design ethos..."
-                    className="w-full p-2.5 rounded-xl bg-couture-950 border border-couture-700 text-white text-xs"
+                    placeholder="Tell clients about your stitching expertise and custom design style..."
+                    className="w-full p-2.5 rounded-xl bg-couture-950 border border-couture-800 text-couture-200 text-xs focus:outline-none focus:border-pink-500"
                   />
                 </div>
               </div>
@@ -296,7 +294,7 @@ export const AuthPage = ({ initialMode = 'login', setCurrentView, onOpenDemoLogi
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-3.5 rounded-xl bg-gradient-to-r from-gold-600 via-gold-500 to-amber-400 hover:from-gold-500 hover:to-amber-300 text-couture-950 font-bold text-sm uppercase tracking-wider shadow-glow-gold transition-all flex items-center justify-center space-x-2 disabled:opacity-50"
+                className="w-full py-3.5 rounded-xl bg-gradient-to-r from-pink-600 via-rose-500 to-pink-500 hover:from-pink-500 hover:to-rose-400 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-pink-500/20 transition-all flex items-center justify-center space-x-2 disabled:opacity-50"
               >
                 <span>{loading ? 'Authenticating...' : mode === 'login' ? 'Sign In to Stitchly' : 'Complete Registration'}</span>
                 <ArrowRight className="w-4 h-4" />

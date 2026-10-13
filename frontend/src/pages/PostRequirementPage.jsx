@@ -3,7 +3,6 @@ import {
   Scissors, 
   Upload, 
   Calendar, 
-  DollarSign, 
   Sparkles, 
   Send, 
   CheckCircle2, 
@@ -22,11 +21,11 @@ export const PostRequirementPage = ({ preFilledData, setCurrentView, onOpenDemoL
 
   const [formData, setFormData] = useState({
     title: '',
-    clothingType: 'Evening Gown',
+    clothingType: 'Lehenga & Choli',
     preferredFabric: '',
     preferredColors: '',
-    budgetMin: '400',
-    budgetMax: '750',
+    budgetMin: '3500',
+    budgetMax: '15000',
     deadline: '',
     inspirationImageUrl: '',
     notes: '',
@@ -71,19 +70,19 @@ export const PostRequirementPage = ({ preFilledData, setCurrentView, onOpenDemoL
     e.preventDefault();
 
     if (!isAuthenticated) {
-      toast.info('Please sign in as a Client or use Demo Logins to post requirements.');
+      toast.info('Please sign in as a Customer or use Demo Logins to post requirements.');
       onOpenDemoLogin && onOpenDemoLogin();
       return;
     }
 
     if (!isCustomer) {
-      toast.error('Only client accounts can post custom requirements. Switch to a Customer account.');
+      toast.error('Only customer accounts can post outfit requirements. Switch to a Customer account.');
       onOpenDemoLogin && onOpenDemoLogin();
       return;
     }
 
     if (!formData.title || !formData.clothingType) {
-      toast.error('Please enter a title and clothing type.');
+      toast.error('Please enter a title and select an outfit category.');
       return;
     }
 
@@ -102,7 +101,7 @@ export const PostRequirementPage = ({ preFilledData, setCurrentView, onOpenDemoL
         measurementsNotes: formData.measurementsNotes.trim(),
       });
 
-      toast.success('Your custom garment requirement has been posted to all ateliers!');
+      toast.success('Your outfit requirement has been posted to local tailors and designers!');
       setCurrentView('customer-dashboard');
     } catch (err) {
       toast.error(err.message || 'Failed to post requirement');
@@ -130,13 +129,13 @@ export const PostRequirementPage = ({ preFilledData, setCurrentView, onOpenDemoL
         <div className="space-y-2 mb-8 pb-6 border-b border-couture-800">
           <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-gold-500/10 border border-gold-500/30 text-gold-400 text-xs font-semibold uppercase tracking-widest">
             <Scissors className="w-3.5 h-3.5" />
-            <span>Marketplace Commission Brief</span>
+            <span>Post Outfit Request</span>
           </div>
           <h1 className="font-serif text-2xl sm:text-4xl font-bold text-white">
-            Post a Custom Clothing Requirement
+            Post Your Custom Outfit Requirement
           </h1>
           <p className="text-xs sm:text-sm text-couture-300 leading-relaxed">
-            Broadcast your bespoke fashion project to verified ateliers and master tailors. You will receive competitive quotations with transparent timelines and fabric recommendations.
+            Share your outfit idea with verified local tailors, boutiques, and designers. You will receive direct price quotes with estimated delivery dates.
           </p>
         </div>
 
@@ -145,14 +144,14 @@ export const PostRequirementPage = ({ preFilledData, setCurrentView, onOpenDemoL
           {/* Title */}
           <div>
             <label className="block text-xs font-semibold text-couture-300 uppercase tracking-wider mb-2">
-              Garment Title or Concept Name *
+              Outfit Title or Idea *
             </label>
             <input
               type="text"
               required
               value={formData.title}
               onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-              placeholder="e.g. Sculpted Champagne Velvet Gala Gown with Structured Corsetry"
+              placeholder="e.g. Silk Bridal Lehenga with Velvet Dupatta & Zardozi Border"
               className="w-full px-4 py-3 rounded-xl bg-couture-950 border border-couture-700 text-white placeholder-couture-600 focus:outline-none focus:border-gold-500 text-sm font-medium"
             />
           </div>
@@ -161,21 +160,20 @@ export const PostRequirementPage = ({ preFilledData, setCurrentView, onOpenDemoL
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <div>
               <label className="block text-xs font-semibold text-couture-300 uppercase tracking-wider mb-2">
-                Garment Category *
+                Outfit Category *
               </label>
               <select
                 value={formData.clothingType}
                 onChange={(e) => setFormData({ ...formData, clothingType: e.target.value })}
                 className="w-full px-3.5 py-3 rounded-xl bg-couture-950 border border-couture-700 text-white text-sm focus:outline-none focus:border-gold-500"
               >
-                <option value="Evening Gown">Evening Gown</option>
-                <option value="Bridal Couture">Bridal Couture & Veils</option>
-                <option value="Bespoke Tailored Suit">Bespoke Tailored Suit & Tuxedo</option>
-                <option value="Traditional Heritage Wear">Traditional Heritage Wear & Lehengas</option>
-                <option value="Cocktail Dress">Cocktail & Party Dress</option>
-                <option value="Architectural Jumpsuit">Architectural Jumpsuit</option>
-                <option value="Custom Outerwear">Custom Coat & Outerwear</option>
-                <option value="Artisanal Streetwear">Artisanal Streetwear</option>
+                <option value="Lehenga & Choli">Lehenga & Choli</option>
+                <option value="Saree & Blouse">Custom Saree Blouse</option>
+                <option value="Anarkali & Salwar Suit">Anarkali & Salwar Suit</option>
+                <option value="Sherwani & Kurta Set">Sherwani & Kurta Set</option>
+                <option value="Indo-Western & Gown">Indo-Western & Evening Gown</option>
+                <option value="Custom Blazer & Suit">Custom Blazer & Suit</option>
+                <option value="Casual & Festive Wear">Casual & Festive Wear</option>
               </select>
             </div>
 
@@ -187,7 +185,7 @@ export const PostRequirementPage = ({ preFilledData, setCurrentView, onOpenDemoL
                 type="text"
                 value={formData.preferredFabric}
                 onChange={(e) => setFormData({ ...formData, preferredFabric: e.target.value })}
-                placeholder="e.g. Silk-Viscose Velvet, Pure Mulberry Silk, French Lace..."
+                placeholder="e.g. Raw Silk, Banarasi Brocade, Organza, Velvet, Georgette..."
                 className="w-full px-4 py-3 rounded-xl bg-couture-950 border border-couture-700 text-white placeholder-couture-600 focus:outline-none focus:border-gold-500 text-sm"
               />
             </div>
@@ -203,23 +201,23 @@ export const PostRequirementPage = ({ preFilledData, setCurrentView, onOpenDemoL
                 type="text"
                 value={formData.preferredColors}
                 onChange={(e) => setFormData({ ...formData, preferredColors: e.target.value })}
-                placeholder="e.g. Deep Emerald, Antique Gold"
+                placeholder="e.g. Royal Blue, Antique Gold"
                 className="w-full px-4 py-3 rounded-xl bg-couture-950 border border-couture-700 text-white placeholder-couture-600 focus:outline-none focus:border-gold-500 text-sm"
               />
             </div>
 
             <div>
               <label className="block text-xs font-semibold text-couture-300 uppercase tracking-wider mb-2">
-                Min Budget (USD)
+                Min Budget (₹ INR)
               </label>
               <div className="relative">
-                <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-couture-500 text-sm">$</span>
+                <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-couture-400 font-semibold text-sm">₹</span>
                 <input
                   type="number"
-                  step="10"
+                  step="500"
                   value={formData.budgetMin}
                   onChange={(e) => setFormData({ ...formData, budgetMin: e.target.value })}
-                  placeholder="300"
+                  placeholder="3500"
                   className="w-full pl-8 pr-3 py-3 rounded-xl bg-couture-950 border border-couture-700 text-white placeholder-couture-600 focus:outline-none focus:border-gold-500 text-sm"
                 />
               </div>
@@ -227,16 +225,16 @@ export const PostRequirementPage = ({ preFilledData, setCurrentView, onOpenDemoL
 
             <div>
               <label className="block text-xs font-semibold text-couture-300 uppercase tracking-wider mb-2">
-                Max Budget (USD)
+                Max Budget (₹ INR)
               </label>
               <div className="relative">
-                <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-couture-500 text-sm">$</span>
+                <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-couture-400 font-semibold text-sm">₹</span>
                 <input
                   type="number"
-                  step="10"
+                  step="500"
                   value={formData.budgetMax}
                   onChange={(e) => setFormData({ ...formData, budgetMax: e.target.value })}
-                  placeholder="700"
+                  placeholder="15000"
                   className="w-full pl-8 pr-3 py-3 rounded-xl bg-couture-950 border border-couture-700 text-white placeholder-couture-600 focus:outline-none focus:border-gold-500 text-sm"
                 />
               </div>
@@ -247,7 +245,7 @@ export const PostRequirementPage = ({ preFilledData, setCurrentView, onOpenDemoL
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <div>
               <label className="block text-xs font-semibold text-couture-300 uppercase tracking-wider mb-2">
-                Event Date or Target Deadline
+                Event Date / Target Deadline
               </label>
               <div className="relative">
                 <Calendar className="absolute top-3.5 left-3.5 w-4 h-4 text-couture-500" />
@@ -297,7 +295,7 @@ export const PostRequirementPage = ({ preFilledData, setCurrentView, onOpenDemoL
               />
               <div className="text-xs text-couture-400">
                 <span className="text-emerald-400 font-semibold block mb-0.5">Photo Attached</span>
-                Designers will inspect this visual inspiration when preparing their tailor-made quotes.
+                Tailors and designers will review this photo when preparing their price quotes.
               </div>
             </div>
           )}
@@ -305,13 +303,13 @@ export const PostRequirementPage = ({ preFilledData, setCurrentView, onOpenDemoL
           {/* Detailed Styling Notes */}
           <div>
             <label className="block text-xs font-semibold text-couture-300 uppercase tracking-wider mb-2">
-              Detailed Styling Specifications & Notes
+              Stitching & Customization Details
             </label>
             <textarea
               rows="4"
               value={formData.notes}
               onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-              placeholder="Explain preferred cut details (neckline, train length, corsetry boning, zipper vs lace-up back, linings, pocket additions)..."
+              placeholder="Describe embroidery details, blouse necklines, sleeve style, lining preferences, zipper/hook preference, or padding details..."
               className="w-full p-3.5 rounded-xl bg-couture-950 border border-couture-700 text-white placeholder-couture-600 focus:outline-none focus:border-gold-500 text-sm leading-relaxed"
             />
           </div>
@@ -319,13 +317,13 @@ export const PostRequirementPage = ({ preFilledData, setCurrentView, onOpenDemoL
           {/* Measurements Notes */}
           <div>
             <label className="block text-xs font-semibold text-couture-300 uppercase tracking-wider mb-2">
-              Measurements & Posture Notes (Optional)
+              Measurements & Fitting Notes (Optional)
             </label>
             <textarea
               rows="2"
               value={formData.measurementsNotes}
               onChange={(e) => setFormData({ ...formData, measurementsNotes: e.target.value })}
-              placeholder="e.g. Bust 35in, Waist 27in, Hips 38in, Height 5'8'', preferred heel height 3 inches..."
+              placeholder="e.g. Bust 36in, Waist 28in, Lehenga length 42in, Shoulder 14in..."
               className="w-full p-3 rounded-xl bg-couture-950 border border-couture-700 text-white placeholder-couture-600 focus:outline-none focus:border-gold-500 text-sm leading-relaxed"
             />
           </div>
@@ -334,7 +332,7 @@ export const PostRequirementPage = ({ preFilledData, setCurrentView, onOpenDemoL
           <div className="p-4 rounded-xl bg-couture-950/80 border border-couture-800 text-xs text-couture-400 flex items-start space-x-2.5">
             <Info className="w-4 h-4 text-gold-400 flex-shrink-0 mt-0.5" />
             <span>
-              Once posted, suitable independent designers and ateliers will review your brief and submit binding quotations. You can compare quotes side-by-side on your Wardrobe dashboard.
+              Once posted, verified local tailors and designers will review your request and send price quotes. You can compare quotes and select your favorite on your dashboard.
             </span>
           </div>
 
@@ -353,11 +351,11 @@ export const PostRequirementPage = ({ preFilledData, setCurrentView, onOpenDemoL
               className="px-8 py-3.5 rounded-xl bg-gradient-to-r from-gold-600 via-gold-500 to-amber-400 hover:from-gold-500 hover:to-amber-300 text-couture-950 font-bold text-sm uppercase tracking-wider shadow-glow-gold transition-all disabled:opacity-50 flex items-center space-x-2"
             >
               {submitting ? (
-                <span>Broadcasting Brief...</span>
+                <span>Posting Request...</span>
               ) : (
                 <>
                   <Send className="w-4 h-4" />
-                  <span>Publish Custom Brief</span>
+                  <span>Publish Requirement</span>
                 </>
               )}
             </button>
